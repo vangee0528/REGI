@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>删除产品</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>删除产品</h1>
+        <form method="post">
+            <label for="product_num">选择要删除的产品:</label>
+            <select id="product_num" name="product_num">
+                {% for product in products %}
+                    <option value="{{ product.num }}">{{ product.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="submit" value="删除产品">
+        </form>
+        <a href="{{ url_for('index') }}">返回</a>
+    </div>
+</body>
+</html>

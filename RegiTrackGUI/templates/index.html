@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>生产登记系统</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>生产登记系统</h1>
+        <div class="bar-container">
+            <div class="bar"><a href="{{ url_for('stuff') }}">员工数据</a></div>
+            <div class="bar"><a href="{{ url_for('products') }}">产品数据</a></div>
+            <div class="bar"><a href="{{ url_for('records') }}">生产记录</a></div>
+        </div>
+    </div>
+</body>
+</html>

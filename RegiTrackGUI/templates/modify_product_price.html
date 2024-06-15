@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>修改产品价格</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>修改产品价格</h1>
+        <form method="post">
+            <label for="product_num">选择产品:</label>
+            <select id="product_num" name="product_num">
+                {% for product in products %}
+                    <option value="{{ product.num }}">{{ product.name }} - {{ product.price }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="new_price">新价格:</label>
+            <input type="text" id="new_price" name="new_price">
+            <br>
+            <input type="submit" value="修改价格">
+        </form>
+        <a href="{{ url_for('index') }}">返回</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>修改记录</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>修改记录</h1>
+        <form method="post">
+            <label for="date">日期:</label>
+            <input type="date" name="date" id="date" value="{{ record.date }}"><br>
+            <label for="quantity">数量:</label>
+            <input type="text" name="quantity" id="quantity" value="{{ record.quantity }}"><br>
+            <label for="price">价格:</label>
+            <input type="text" name="price" id="price" value="{{ record.price }}"><br>
+            <label for="stuff_num">员工:</label>
+            <select name="stuff_num" id="stuff_num">
+                {% for stuff in stuff_list %}
+                    <option value="{{ stuff.num }}" {% if stuff.num == record.stuff_num %} selected {% endif %}>{{ stuff.name }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="product_num">产品:</label>
+            <select name="product_num" id="product_num">
+                {% for product in product_list %}
+                    <option value="{{ product.num }}" {% if product.num == record.product_num %} selected {% endif %}>{{ product.name }}</option>
+                {% endfor %}
+            </select><br>
+            <input type="submit" value="保存修改">
+        </form>
+        <a href="{{ url_for('records') }}">返回</a>
+    </div>
+</body>
+</html>

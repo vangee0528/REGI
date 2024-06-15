@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>删除员工</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>删除员工</h1>
+        <form method="post">
+            <label for="stuff_num">选择要删除的员工:</label>
+            <select id="stuff_num" name="stuff_num">
+                {% for stuff in stuff %}
+                    <option value="{{ stuff.num }}">{{ stuff.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="submit" value="删除员工">
+        </form>
+        <a href="{{ url_for('index') }}">返回</a>
+    </div>
+</body>
+</html>

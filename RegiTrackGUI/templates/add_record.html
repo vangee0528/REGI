@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>添加记录</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>添加记录</h1>
+        <form method="post">
+            员工:
+            <select name="stuff_num">
+                {% for stuff in stuff_list %}
+                    <option value="{{ stuff.num }}">{{ stuff.name }}</option>
+                {% endfor %}
+            </select><br>
+            产品:
+            <select name="product_num">
+                {% for product in product_list %}
+                    <option value="{{ product.num }}">{{ product.name }}</option>
+                {% endfor %}
+            </select><br>
+            数量: <input type="text" name="quantity"><br>
+            日期: <input type="date" name="date" value="{{ today_date }}"><br>
+            <input type="submit" value="添加记录">
+        </form>
+        <a href="{{ url_for('index') }}">返回</a>
+    </div>
+</body>
+</html>

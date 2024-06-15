@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>记录</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container table-container">
+        <h1>记录</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>日期</th>
+                    <th>员工</th>
+                    <th>产品</th>
+                    <th>数量</th>
+                    <th>价格</th>
+                    <th>总价</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.id }}</td>
+                        <td>{{ record.date }}</td>
+                        <td>{{ get_stuff_name(record.stuff_num) }}</td>
+                        <td>{{ get_product_name(record.product_num) }}</td>
+                        <td>{{ record.quantity }}</td>
+                        <td>{{ record.price }}</td>
+                        <td>{{ record.total }}</td>
+                        <td><a href="{{ url_for('modify_record', record_id=record.id) }}">修改</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('add_record') }}">添加记录</a>
+        <a href="{{ url_for('index') }}">返回</a>
+    </div>
+</body>
+</html>
